@@ -71,7 +71,11 @@ async def select_time(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     time_str = query.data.split("_")[1]
     context.user_data["time"] = time_str
-    await query.edit_message_text(f"📅 Дата: *{context.user_data['date']}*
+    await query.edit_message_text(
+        f"📅 Дата: *{context.user_data['date']}*\n"
+        f"⏰ Время: *{context.user_data['time']}*",
+        parse_mode="Markdown"
+    )
 "
                                   f"⏰ Время: *{context.user_data['time']}*", parse_mode="Markdown")
     await query.message.reply_text("📞 *Ваш телефон?*\n_Можно пропустить_", parse_mode="Markdown")
